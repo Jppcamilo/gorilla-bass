@@ -1,0 +1,22 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: url('../assets/selva.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(0, 0, 0);
+}
+
+#batalha {
+  margin: 20px;
+}
+
+#gorila {
+  width: 150px;
+  transition: transform 0.2s;
+}
+
+#humanos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
