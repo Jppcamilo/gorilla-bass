@@ -20,4 +20,4 @@ Simulação de uma batalha entre um gorila e 100 humanos, onde o jogador control
 - `/assets` (imagens e sons)
 
 ## 👨‍👩‍👧‍👦 Integrantes
-- João Pedro Pereira Camilo - RM
+- João Pedro Pereira Camilo - RM 562005
