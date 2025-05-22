@@ -103,7 +103,7 @@ function log(msg) {
 
 setInterval(() => {
   if (humanos.filter(h => h).length > 0) {
-    const dano = Math.floor(Math.random() * 5);
+    const dano = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
     vidaGorila -= dano;
     log(`Humanos atacaram causando ${dano} de dano!`);
     atualizarStatus();
