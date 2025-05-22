@@ -94,3 +94,18 @@ function animarAtaque() {
     gorila.style.transform = 'scale(1)';
   }, 200);
 }
+
+function log(msg) {
+  const logDiv = document.getElementById('log');
+  logDiv.innerHTML += `<p>${msg}</p>`;
+  logDiv.scrollTop = logDiv.scrollHeight;
+}
+
+setInterval(() => {
+  if (humanos.filter(h => h).length > 0) {
+    const dano = Math.floor(Math.random() * 5);
+    vidaGorila -= dano;
+    log(`Humanos atacaram causando ${dano} de dano!`);
+    atualizarStatus();
+  }
+}, 3000);
