@@ -4,6 +4,34 @@ let ataquesFeitos = 0;
 let cooldown = false;
 let cooldownCura = false;
 
+
+const humanosContainer = document.getElementById('humanos');
+
+function desenharHumanos() {
+  humanosContainer.innerHTML = '';  
+
+  humanos.forEach((vivo, index) => {
+    const img = document.createElement('img');
+    img.src = '../assets/humanos.png';  
+    img.alt = `Humano ${index + 1}`;
+    img.classList.add('humano');
+    if (!vivo) {
+      img.classList.add('morto');  
+    }
+    humanosContainer.appendChild(img);
+  });
+}
+
+function atualizarStatus() {
+  document.getElementById('vidaGorila').textContent = vidaGorila;
+  document.getElementById('humanosRestantes').textContent = humanos.filter(h => h).length;
+  document.getElementById('ataquesFeitos').textContent = ataquesFeitos;
+
+  desenharHumanos();  
+}
+
+
+
 if(localStorage.getItem('vidaGorila')) {
   vidaGorila = parseInt(localStorage.getItem('vidaGorila'));
   humanos = JSON.parse(localStorage.getItem('humanos'));
@@ -34,6 +62,8 @@ function salvarEstado() {
   localStorage.setItem('ataquesFeitos', ataquesFeitos);
 }
 
+const somAtaque = new Audio('../assets/Som de soco.mp3');
+
 function atacar() {
   if (cooldown) {
     log('O gorila está cansado! Espere um pouco...');
@@ -48,11 +78,13 @@ function atacar() {
     humanos[alvo] = false;
     ataquesFeitos++;
     log(`Gorila atacou e eliminou um humano!`);
+    
+    somAtaque.play();  // ✅ Aqui toca o som
+
     animarAtaque();
   }
   atualizarStatus();
 
-  // Ativa cooldown
   cooldown = true;
   document.querySelector('button[onclick="atacar()"]').disabled = true;
 
@@ -60,10 +92,7 @@ function atacar() {
     cooldown = false;
     document.querySelector('button[onclick="atacar()"]').disabled = false;
     log('O gorila está pronto para atacar novamente!');
-  }, 1000); // 1 segundo de cooldown
-}
-function defender() {
-  log('Gorila se defendeu e reduziu o dano do próximo ataque.');
+  }, 100);
 }
 
 function curar() {

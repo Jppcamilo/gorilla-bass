@@ -18,18 +18,17 @@ body {
 #humanos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 5px;
 }
 
-#humano {
-  width: 400px;
-  height: 400px;
-  background-size: cover;
-  margin: 2px;
+.humano {
+  width: 30px;
+  height: 30px;
 }
 
-.derrotado {
+.morto {
   opacity: 0.3;
+  filter: grayscale(100%);
 }
 
 #log {
