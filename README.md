@@ -3,8 +3,8 @@ Simulação de uma batalha entre um gorila e 100 humanos, onde o jogador control
 
 ## 🚀 Tecnologias
 - HTML5
-- CSS3
-- JavaScript (puro)
+- CSS
+- JavaScript
 - localStorage
 
 ## 📝 Como jogar
