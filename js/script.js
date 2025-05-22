@@ -31,3 +31,17 @@ function salvarEstado() {
   localStorage.setItem('humanos', JSON.stringify(humanos));
   localStorage.setItem('ataquesFeitos', ataquesFeitos);
 }
+
+function atacar() {
+  const humanosVivos = humanos.filter(h => h).length;
+  if (humanosVivos === 0) return;
+
+  const alvo = humanos.findIndex(h => h);
+  if (alvo >= 0) {
+    humanos[alvo] = false;
+    ataquesFeitos++;
+    log(`Gorila atacou e eliminou um humano!`);
+    animarAtaque();
+  }
+  atualizarStatus();
+}
