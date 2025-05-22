@@ -1,6 +1,8 @@
 let vidaGorila = 100;
 let humanos = Array(100).fill(true);
 let ataquesFeitos = 0;
+let cooldown = false;
+let cooldownCura = false;
 
 if(localStorage.getItem('vidaGorila')) {
   vidaGorila = parseInt(localStorage.getItem('vidaGorila'));
@@ -33,6 +35,11 @@ function salvarEstado() {
 }
 
 function atacar() {
+  if (cooldown) {
+    log('O gorila está cansado! Espere um pouco...');
+    return;
+  }
+
   const humanosVivos = humanos.filter(h => h).length;
   if (humanosVivos === 0) return;
 
@@ -44,16 +51,40 @@ function atacar() {
     animarAtaque();
   }
   atualizarStatus();
-}
 
+  // Ativa cooldown
+  cooldown = true;
+  document.querySelector('button[onclick="atacar()"]').disabled = true;
+
+  setTimeout(() => {
+    cooldown = false;
+    document.querySelector('button[onclick="atacar()"]').disabled = false;
+    log('O gorila está pronto para atacar novamente!');
+  }, 1000); // 1 segundo de cooldown
+}
 function defender() {
   log('Gorila se defendeu e reduziu o dano do próximo ataque.');
 }
 
 function curar() {
+  if (cooldownCura) {
+    log('O gorila ainda está se recuperando! Espere um pouco...');
+    return;
+  }
+
   vidaGorila = Math.min(vidaGorila + 10, 100);
   log('Gorila se curou em 10 pontos!');
   atualizarStatus();
+
+  // Ativa cooldown
+  cooldownCura = true;
+  document.querySelector('button[onclick="curar()"]').disabled = true;
+
+  setTimeout(() => {
+    cooldownCura = false;
+    document.querySelector('button[onclick="curar()"]').disabled = false;
+    log('O gorila pode se curar novamente!');
+  }, 3000); // 3 segundos de cooldown
 }
 
 function animarAtaque() {
