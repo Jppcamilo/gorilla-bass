@@ -109,3 +109,25 @@ setInterval(() => {
     atualizarStatus();
   }
 }, 3000);
+
+function verificarFimDeJogo() {
+  if (vidaGorila <= 0) {
+    log('Gorila foi derrotado!');
+    alert('Fim de jogo! O gorila perdeu.');
+    resetar();
+  } else if (humanos.filter(h => h).length === 0) {
+    log('Todos os humanos foram derrotados!');
+    alert('Parabéns! O gorila venceu!');
+    resetar();
+  }
+}
+
+function resetar() {
+  vidaGorila = 100;
+  humanos = Array(100).fill(true);
+  ataquesFeitos = 0;
+  localStorage.clear();
+  atualizarStatus();
+}
+
+atualizarStatus();
