@@ -55,3 +55,11 @@ function curar() {
   log('Gorila se curou em 10 pontos!');
   atualizarStatus();
 }
+
+function animarAtaque() {
+  const gorila = document.getElementById('gorila');
+  gorila.style.transform = 'scale(1.2)';
+  setTimeout(() => {
+    gorila.style.transform = 'scale(1)';
+  }, 200);
+}
