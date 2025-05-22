@@ -1,9 +1,23 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial Bold, sans-serif;
   text-align: center;
   background: url('../assets/selva.jpg') no-repeat center center fixed;
   background-size: cover;
   color: white;
+  position: relative; /* Necessário para o ::before funcionar */
+  z-index: 1;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Ajuste o 0.5 para mais ou menos escuro */
+  z-index: -1;
+  pointer-events: none;
 }
 
 #batalha {
@@ -19,6 +33,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+}
+
+#status {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .humano {
