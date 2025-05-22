@@ -3,7 +3,7 @@ body {
   text-align: center;
   background: url('../assets/selva.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: rgb(0, 0, 0);
+  color: white;
 }
 
 #batalha {
@@ -11,7 +11,7 @@ body {
 }
 
 #gorila {
-  width: 150px;
+  width: 700px;
   transition: transform 0.2s;
 }
 
