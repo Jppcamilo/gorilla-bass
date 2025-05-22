@@ -45,3 +45,13 @@ function atacar() {
   }
   atualizarStatus();
 }
+
+function defender() {
+  log('Gorila se defendeu e reduziu o dano do próximo ataque.');
+}
+
+function curar() {
+  vidaGorila = Math.min(vidaGorila + 10, 100);
+  log('Gorila se curou em 10 pontos!');
+  atualizarStatus();
+}
